@@ -2,8 +2,11 @@ package main
 
 import(
 	"fmt"
+	"net/http"
 )
 
 func main(){
-	fmt.Println("Just trying a template.")
+	http.Handle("/", http.FileServer(http.Dir("./static")))
+	http.ListenAndServe(":8080", nil)
+	//fmt.Println("Just trying a template.")
 }
